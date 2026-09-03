@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แผนที่ | EV KNOWLEDGE</title>
+<meta name="description" content="แผนที่โชว์รูมและจุดชาร์จรถยนต์ไฟฟ้า">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="bolt">E</span> EV KNOWLEDGE</a>
+    <nav class="main-nav">
+      <ul>
+        <li class=""><a href="index.html">หน้าหลัก</a></li>
+        <li class="has-dropdown ">
+          <button>แบรนด์ <span class="caret">▾</span></button>
+          <ul class="dropdown">
+            <li><a href="brand-mg.html">MG <span class="tag">2 รุ่น</span></a></li>
+            <li><a href="brand-byd.html">BYD <span class="tag">2 รุ่น</span></a></li>
+            <li><a href="brand-tesla.html">TESLA <span class="tag">2 รุ่น</span></a></li>
+            <li><a href="brand-geely.html">GEELY <span class="tag">2 รุ่น</span></a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown ">
+          <button>รถยนต์ไฟฟ้า <span class="caret">▾</span></button>
+          <ul class="dropdown">
+            <li><a href="car-mgs5ev.html">MGS5 EV</a></li>
+            <li><a href="car-mgurban.html">MG URBAN</a></li>
+            <li><a href="car-bydseal6.html">BYD SEAL 6</a></li>
+            <li><a href="car-bydatto3evo.html">BYD ATTO 3 EVO</a></li>
+            <li><a href="car-teslamodel3.html">Tesla Model 3</a></li>
+            <li><a href="car-teslamodely.html">Tesla Model Y</a></li>
+            <li><a href="car-geelyex2.html">Geely EX2</a></li>
+            <li><a href="car-geelyex5.html">Geely EX5</a></li>
+          </ul>
+        </li>
+        <li class=""><a href="compare.html">เปรียบเทียบ</a></li>
+        <li class="active"><a href="map.html">แผนที่</a></li>
+        <li class=""><a href="contact.html">ติดต่อเรา</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle">☰</button>
+  </div>
+</header>
+
+<section class="wrap" style="padding-top:40px;">
+  <span class="crumb"><b>แผนที่</b></span>
+  <h1>จุดชาร์จรถยนต์ไฟฟ้า</h1>
+  <p>ค้นหาสถานีชาร์จรถยนต์ไฟฟ้าใกล้คุณ ครอบคลุมทุกแบรนด์ในเครือข่ายของเรา</p>
+	
+  <div class="map-frame">
+    <div class="map-count-badge">จุดชาร์จ EV ในชลบุรี (ยืนยันพิกัดจริง): <span id="evStationCount">0</span> แห่ง</div>
+    <div id="ev-map"></div>
+  </div>
+  <div class="map-legend">
+    <span class="legend-item"><i style="background:#B6FF3F"></i>PEA VOLTA</span>
+    <span class="legend-item"><i style="background:#2FD1C5"></i>EleX by EGAT</span>
+    <span class="legend-item"><i style="background:#FFB020"></i>EV Station PluZ / PTT</span>
+    <span class="legend-item"><i style="background:#E23E3E"></i>Tesla Supercharger</span>
+    <span class="legend-item"><i style="background:#6E8CA0"></i>แบรนด์เอกชนอื่นๆ</span>
+    <span class="legend-item"><i style="background:none;border-top:2px dashed #0C1F2E;border-radius:0;width:16px;height:0;"></i>ขอบเขตจังหวัดชลบุรี</span>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;"><span class="bolt">E</span> EV KNOWLEDGE</div>
+        <p style="color:rgba(255,255,255,.55); max-width:34ch;">แหล่งข้อมูลรถยนต์ไฟฟ้า สเปก ราคา และการเปรียบเทียบรุ่นจากทุกแบรนด์ ในที่เดียว</p>
+      </div>
+      <div>
+        <h4>แบรนด์</h4>
+        <ul>
+          <li><a href="brand-mg.html">MG</a></li>
+          <li><a href="brand-byd.html">BYD</a></li>
+          <li><a href="brand-tesla.html">TESLA</a></li>
+          <li><a href="brand-geely.html">GEELY</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>เมนู</h4>
+        <ul>
+          <li><a href="index.html">หน้าหลัก</a></li>
+          <li><a href="compare.html">เปรียบเทียบ</a></li>
+          <li><a href="map.html">แผนที่</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อ</h4>
+        <ul>
+          <li>aksorn@aksron.ac.th</li>
+          <li>0-3841-5611, 0-3841-5622</li>
+          <li>เลขที่ 189/30 หมู่ 11 ซอยสุขุมวิท-พัทยา 50 ตำบลหนองปรือ อำเภอบางละมุง จังหวัดชลบุรี 20150</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="js/script.js"></script>
+<script>
+  const evStations = [
+    // --- PEA VOLTA ---
+    {name:"PEA VOLTA บายพาสชลบุรี", area:"อ.เมืองชลบุรี", cat:"pea", lat:13.3622989, lng:101.0159313},
+    {name:"PEA VOLTA บ้านบึง", area:"อ.บ้านบึง", cat:"pea", lat:13.3343017, lng:101.0788024},
+    {name:"PEA VOLTA พัทยาใต้", area:"อ.บางละมุง (พัทยา)", cat:"pea", lat:12.9246630, lng:100.8674240},
+    {name:"PEA VOLTA พัทยาตะวันออก", area:"อ.บางละมุง (พัทยา)", cat:"pea", lat:12.9226823, lng:100.8841165},
+
+    // --- EleX by EGAT ---
+    {name:"EleX by EGAT บ้านบึง", area:"อ.บ้านบึง", cat:"egat", lat:13.3024173, lng:101.1399364},
+    {name:"EleX by EGAT แสนสุข-บางแสน", area:"อ.เมืองชลบุรี", cat:"egat", lat:13.2477951, lng:100.9346356},
+    {name:"EleX by EGAT พัทยา (สุขุมวิท)", area:"อ.บางละมุง (พัทยา)", cat:"egat", lat:12.9116439, lng:100.8961965},
+    {name:"EleX by EGAT พัทยา (ราชวรุณ)", area:"อ.บางละมุง (พัทยา)", cat:"egat", lat:12.9208131, lng:100.8594990},
+
+    // --- EV Station PluZ / PTT ---
+    {name:"EV Station PluZ พัทยากลาง", area:"อ.บางละมุง (พัทยา)", cat:"pluz", lat:12.9503124, lng:100.8908239},
+    {name:"PTT Station EV สุขุมวิท พัทยา", area:"อ.บางละมุง (พัทยา)", cat:"pluz", lat:12.8831052, lng:100.8990622},
+    {name:"PTT Station EV พัทยาเหนือ", area:"อ.บางละมุง (พัทยา)", cat:"pluz", lat:12.9826469, lng:100.9191268},
+    {name:"PTT Station EV อ่างศิลา", area:"อ.เมืองชลบุรี", cat:"pluz", lat:13.3271328, lng:100.9386289},
+
+    // --- Tesla Supercharger ---
+    {name:"Tesla Supercharger บิ๊กซี บายพาสชลบุรี", area:"อ.เมืองชลบุรี", cat:"tesla", lat:13.3166727, lng:100.9592308},
+    {name:"Tesla Supercharger เซ็นทรัล เฟสติวัล พัทยา บีช", area:"อ.บางละมุง (พัทยา)", cat:"tesla", lat:12.9347399, lng:100.8833045},
+
+    // --- แบรนด์เอกชนอื่นๆ ---
+    {name:"Evolt บ้านบึง (มาบไผ่)", area:"อ.บ้านบึง", cat:"other", lat:13.3316750, lng:101.0831255},
+    {name:"Evolt มอเตอร์เวย์7 ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.1075560, lng:100.9867500},
+    {name:"Evolt สำเภาทอง เมืองชลบุรี", area:"อ.เมืองชลบุรี", cat:"other", lat:13.3388089, lng:100.9647508},
+    {name:"Evolt โตโยต้า พัทยา", area:"อ.บางละมุง (พัทยา)", cat:"other", lat:12.9898973, lng:100.9242411},
+    {name:"Evolt ฮอลิเดย์อินน์ พัทยา", area:"อ.บางละมุง (พัทยา)", cat:"other", lat:12.9478580, lng:100.8856450},
+    {name:"Sharge เขาคันทรง ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.0812171, lng:101.1217220},
+    {name:"EleXA บางพระ ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.2415196, lng:100.9955826},
+    {name:"EleXA สุรศักดิ์ ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.1500071, lng:100.9679140},
+    {name:"EleXA หนองกะขะ พานทอง", area:"อ.พานทอง", cat:"other", lat:13.4217378, lng:101.0990421},
+    {name:"EA Anywhere โรงแรมโมริโน ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.1191920, lng:100.9994681},
+    {name:"Charge+ สุขุมวิท พัทยา", area:"อ.บางละมุง (พัทยา)", cat:"other", lat:12.9555788, lng:100.9079259},
+    {name:"Charge+ คลองกิ่ว บ้านบึง", area:"อ.บ้านบึง", cat:"other", lat:13.2292710, lng:101.1504160},
+    {name:"Charge+ ห้วยกะปิ เมืองชลบุรี", area:"อ.เมืองชลบุรี", cat:"other", lat:13.3329122, lng:100.9773042},
+    {name:"ChargePlus บางพระ ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.2131226, lng:100.9959793},
+    {name:"Chargeplus บายพาสชลบุรี", area:"อ.เมืองชลบุรี", cat:"other", lat:13.360588, lng:101.013706},
+    {name:"Chargeplus บางแสน", area:"อ.เมืองชลบุรี", cat:"other", lat:13.289921, lng:100.912790},
+    {name:"MG Super Charge บ่อวิน ศรีราชา", area:"อ.ศรีราชา", cat:"other", lat:13.0560864, lng:101.0974541},
+    {name:"ProCharge สุขุมวิท พัทยา", area:"อ.บางละมุง (พัทยา)", cat:"other", lat:12.9400779, lng:100.9034796},
+    {name:"Shell Recharge สำเภาทอง เมืองชลบุรี", area:"อ.เมืองชลบุรี", cat:"other", lat:13.2896920, lng:100.9407610},
+    {name:"EV ONE บายพาสชลบุรี (คาลเท็กซ์)", area:"อ.เมืองชลบุรี", cat:"other", lat:13.3664131, lng:101.0173282}
+  ];
+
+  const catMeta = {
+    pea:   {label:"PEA VOLTA",              color:"#B6FF3F"},
+    egat:  {label:"EleX by EGAT",           color:"#2FD1C5"},
+    pluz:  {label:"EV Station PluZ / PTT",  color:"#FFB020"},
+    tesla: {label:"Tesla Supercharger",     color:"#E23E3E"},
+    other: {label:"แบรนด์เอกชนอื่นๆ",         color:"#6E8CA0"}
+  };
+
+  const map = L.map('ev-map', { scrollWheelZoom:false }).setView([13.15, 100.98], 10);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    maxZoom: 18
+  }).addTo(map);
+
+  evStations.forEach(s => {
+    const meta = catMeta[s.cat];
+    const icon = L.divIcon({
+      className: '',
+      html: `<div style="
+        width:14px;height:14px;border-radius:50%;
+        background:${meta.color};border:2.5px solid #0C1F2E;
+        box-shadow:0 1px 3px rgba(0,0,0,0.4);
+      "></div>`,
+      iconSize: [14,14],
+      iconAnchor: [7,7]
+    });
+    L.marker([s.lat, s.lng], {icon}).addTo(map)
+      .bindPopup(`<strong>${s.name}</strong><br/>${meta.label}<br/>${s.area}`);
+  });
+
+  document.getElementById('evStationCount').textContent = evStations.length;
+
+  // ---------- ขอบเขตจังหวัดชลบุรี (เส้นปะ) + พื้นที่นอกจังหวัดสีเทาจาง ----------
+  // ดึงขอบเขตจังหวัดจริงจาก OpenGISData-Thailand (ข้อมูลเปิด อ้างอิงจากกรมแผนที่ทหาร)
+  // โหลดฝั่งเบราว์เซอร์ตอนรัน จึงต้องมีอินเทอร์เน็ต ถ้าโหลดไม่สำเร็จจะข้ามส่วนนี้ไปเฉยๆ ไม่กระทบส่วนอื่นของแผนที่
+  const PROVINCE_GEOJSON_URL = 'https://cdn.jsdelivr.net/gh/chingchai/OpenGISData-Thailand@master/provinces.geojson';
+  const WORLD_RING = [[85,-180],[85,180],[-85,180],[-85,-180]]; // กรอบใหญ่ครอบทั้งแผนที่ สำหรับตัดรู (mask)
+
+  fetch(PROVINCE_GEOJSON_URL)
+    .then(res => res.json())
+    .then(geo => {
+      const feature = geo.features.find(f => {
+        const vals = Object.values(f.properties || {}).map(v => String(v).trim());
+        return vals.includes('ชลบุรี') || vals.some(v => /chon\s*buri/i.test(v));
+      });
+      if (!feature) { console.warn('ไม่พบขอบเขตจังหวัดชลบุรีในไฟล์ GeoJSON'); return; }
+
+      // ดึงทุกวงแหวน (ring) ของ Polygon/MultiPolygon มาเป็นรู mask (แปลง [lng,lat] -> [lat,lng])
+      const polygons = feature.geometry.type === 'Polygon'
+        ? [feature.geometry.coordinates]
+        : feature.geometry.coordinates; // MultiPolygon
+      const holes = [];
+      polygons.forEach(poly => {
+        poly.forEach(ring => holes.push(ring.map(c => [c[1], c[0]])));
+      });
+
+      // 1) พื้นที่นอกจังหวัด = เทาจาง (ใช้กรอบโลกเป็นวงนอก + รูปจังหวัดเป็นรู)
+      L.polygon([WORLD_RING, ...holes], {
+        stroke: false,
+        fillColor: '#C7D0CD',
+        fillOpacity: 0.62,
+        interactive: false
+      }).addTo(map);
+
+      // 2) เส้นขอบจังหวัดชลบุรี แบบเส้นปะ
+      const boundary = L.geoJSON(feature, {
+        style: { color: '#0C1F2E', weight: 2.5, dashArray: '7 6', fill: false }
+      }).addTo(map);
+
+      map.fitBounds(boundary.getBounds(), { padding: [24, 24] });
+    })
+    .catch(err => console.warn('โหลดขอบเขตจังหวัดไม่สำเร็จ:', err));
+</script>
+	</body>
+	</html>
